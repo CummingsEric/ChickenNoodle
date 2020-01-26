@@ -104,9 +104,8 @@ var xPathFinder = xPathFinder || (() => {
             overlayHtml && overlayHtml.remove();
         }
         
-        GenLXML(url,xpath){
-            code = `url = "${url}"\nhtml = requests.get(url)\ndoc = lxml.html.fromstring(html.content)\ndata = doc.xpath(${xpath})[0].text_content()`;
-            return code;
+        GenLXML(url, xpath){
+            return `url = "${url}"\nhtml = requests.get(url)\ndoc = lxml.html.fromstring(html.content)\ndata = doc.xpath('${xpath}')[0].text_content()`;
         }
 
         copyText(XPath) {

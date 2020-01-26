@@ -105,16 +105,13 @@ var xPathFinder = xPathFinder || (() => {
         }
         
         GenLXML(url,xpath){
-            code = `url = "${url}"
-            html = requests.get(url)
-            doc = lxml.html.fromstring(html.content)
-            data = doc.xpath(${xpath})[0].text_content()`;
+            code = `url = "${url}"\nhtml = requests.get(url)\ndoc = lxml.html.fromstring(html.content)\ndata = doc.xpath(${xpath})[0].text_content()`;
             return code;
         }
 
         copyText(XPath) {
             const hdInp = document.createElement('textarea');
-            hdInp.textContent = GenLXML(this.win.location.href,XPath);
+            hdInp.textContent = this.GenLXML(this.win.location.href,XPath);
             document.body.appendChild(hdInp);
             hdInp.select();
             document.execCommand('copy');
